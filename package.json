@@ -12,6 +12,7 @@
   "dependencies": {
     "@stripe/stripe-js": "^4.1.0",
     "nuxt": "^3.12.3",
+    "stripe": "^16.2.0",
     "vue": "latest"
   }
 }

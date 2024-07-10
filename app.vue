@@ -2,8 +2,9 @@
 import { loadStripe } from '@stripe/stripe-js';
 
 // import SrMessages from "./SrMessages.vue";
+const runtimeConfig = useRuntimeConfig();
 
-const public_stripe_key = $config.public.API_BASE_URL;
+const public_stripe_key = runtimeConfig.public.STRIPE_KEY;
 
 const isLoading = ref(false);
 const messages = ref([]);
