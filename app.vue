@@ -24,6 +24,8 @@ onMounted(async () => {
   }
   messages.value.push(`Client secret returned.`);
 
+  const options = { mode: 'billing' };
+
   elements = stripe.elements({ clientSecret });
 
   const paymentElement = elements.create('payment');
@@ -31,6 +33,9 @@ onMounted(async () => {
 
   const linkAuthenticationElement = elements.create('linkAuthentication');
   linkAuthenticationElement.mount('#link-authentication-element');
+
+  const addressElement = elements.create('address', options);
+  addressElement.mount('#address-element');
 
   isLoading.value = false;
 });
@@ -76,6 +81,7 @@ const handleSubmit = async () => {
       @submit.prevent="handleSubmit"
     >
       <div id="link-authentication-element" />
+      <div id="address-element" />
       <div id="payment-element" />
       <button
         id="submit"
@@ -87,3 +93,14 @@ const handleSubmit = async () => {
     </form>
   </main>
 </template>
+<style scoped>
+main {
+  max-width: 500px;
+}
+
+#payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+</style>
